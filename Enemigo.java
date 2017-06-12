@@ -6,6 +6,7 @@ public class Enemigo extends Entidad
 {
     private static final int DISTANCIA_PARA_REINICIAR_MOVIMIENTO = 64;
     private static final int LADO_DEL_SPRITE = 40;
+    private static final String RUTA_SPRITE_IDLE = "Recursos/GIF/eagle/idle.gif";
     private boolean disparado;
     
     public Enemigo(float anchoDeLaEscena, float altoDeLaEscena)
@@ -35,7 +36,7 @@ public class Enemigo extends Entidad
     
     @Override
     public void inicializarImagenes(){
-        spriteIdle = new Image("Recursos/GIF/eagle/idle.gif");
+        spriteIdle = new Image(RUTA_SPRITE_IDLE);
     }
     
     public boolean disparadoPor(Circle disparo){

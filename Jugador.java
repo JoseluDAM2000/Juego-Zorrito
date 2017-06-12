@@ -4,6 +4,8 @@ public class Jugador extends Entidad
 {
     private static final int LADO_DEL_SPRITE = 32;
     private static final int DISTANCIA_INFERIOR = 210;
+    private static final String RUTA_SPRITE_IDLE = "Recursos/GIF/player/idle.gif";
+    private static final String RUTA_SPRITE_CORRIENDO = "Recursos/GIF/player/run.gif";
     private Image spriteCorriendo;
     private float limiteDerecho, limiteIzquierdo;
     private int velocidadEnCarrera;
@@ -32,8 +34,8 @@ public class Jugador extends Entidad
     
     @Override
     public void inicializarImagenes(){
-        spriteIdle = new Image("Recursos/GIF/player/idle.gif");
-        spriteCorriendo = new Image("Recursos/GIF/player/run.gif");
+        spriteIdle = new Image(RUTA_SPRITE_IDLE);
+        spriteCorriendo = new Image(RUTA_SPRITE_CORRIENDO);
     }
     
     public void cambiarDireccion(Direccion direccion){

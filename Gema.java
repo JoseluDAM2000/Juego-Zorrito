@@ -3,6 +3,7 @@ import javafx.scene.image.Image;
 public class Gema extends Objeto
 {
     private double posicionInicialX, posicionInicialY;
+    private static final String RUTA_SPRITE = "Recursos/GIF/items/gem.gif";
     public Gema(float anchoDeLaEscena, float altoDeLaEscena)
     {
         super(anchoDeLaEscena, altoDeLaEscena);
@@ -26,7 +27,7 @@ public class Gema extends Objeto
     
     @Override
     public void inicializarImagenes(){
-        spriteIdle = new Image("Recursos/GIF/items/gem.gif");
+        spriteIdle = new Image(RUTA_SPRITE);
     }
     
     public void fijarPosicion(double posicionX, double posicionY){

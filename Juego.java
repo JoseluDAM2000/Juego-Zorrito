@@ -15,6 +15,7 @@ import javafx.scene.shape.Circle;
 public class Juego extends Application
 {
     private static final String TITULO_DE_LA_VENTANA = "Juego Zorrito";
+    private static final String RUTA_IMAGEN_BACKGROUND = "Recursos/background.png";
     private static final float ANCHO_DE_LA_ESCENA = 800;
     private static final float ALTO_DE_LA_ESCENA = 600;
     private ArrayList<Enemigo> enemigos;
@@ -109,7 +110,7 @@ public class Juego extends Application
         timeline.play();
         
         try{
-            BACKGROUND.setImage(new Image("Recursos/background.png"));
+            BACKGROUND.setImage(new Image(RUTA_IMAGEN_BACKGROUND));
         }catch(Exception e){
             e.printStackTrace();
         }

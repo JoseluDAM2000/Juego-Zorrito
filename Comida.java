@@ -2,7 +2,8 @@ import javafx.scene.image.Image;
 
 public class Comida extends Objeto
 {
-
+    private static final String RUTA_SPRITE = "Recursos/GIF/items/cherry.gif";
+    
     public Comida(float anchoDeLaEscena, float altoDeLaEscena)
     {
         super(anchoDeLaEscena, altoDeLaEscena);
@@ -24,6 +25,6 @@ public class Comida extends Objeto
     
     @Override
     public void inicializarImagenes(){
-        spriteIdle = new Image("Recursos/GIF/items/cherry.gif");
+        spriteIdle = new Image(RUTA_SPRITE);
     }
 }
