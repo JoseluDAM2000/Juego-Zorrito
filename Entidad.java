@@ -6,6 +6,7 @@ public abstract class Entidad extends ImageView
     protected Image spriteIdle;
     protected float anchoDeLaEscena;
     protected float altoDeLaEscena;
+    protected int velocidad;
     public Entidad(float anchoDeLaEscena, float altoDeLaEscena)
     {
         super();
