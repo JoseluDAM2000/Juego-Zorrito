@@ -9,6 +9,8 @@ import javafx.util.Duration;
 import javafx.scene.input.KeyCode;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.shape.Circle;
 
 public class Juego extends Application
 {
@@ -18,6 +20,9 @@ public class Juego extends Application
     private ArrayList<Enemigo> enemigos;
     private static final int CANTIDAD_DE_ENEMIGOS = 10;
     private static final ImageView BACKGROUND = new ImageView();
+    private static final int DIAMETRO_DISPARO = 5;
+    private Circle disparo;
+    private ArrayList<Objeto> objetos;
     
     public static void main(String[] args){
         launch(args);
@@ -34,9 +39,11 @@ public class Juego extends Application
         primaryStage.sizeToScene();
         panel.getChildren().add(BACKGROUND);
         
-        // Iniciamos al jugador:
+        // Iniciamos al jugador y la coleccion de objetos:
         Jugador jugador = new Jugador(ANCHO_DE_LA_ESCENA, ALTO_DE_LA_ESCENA);
         panel.getChildren().add(jugador);
+        disparo = new Circle (DIAMETRO_DISPARO);
+        objetos = new ArrayList<Objeto>();
         
         // Inicializamos a los enemigos:
         enemigos = new ArrayList<Enemigo>();
@@ -72,13 +79,30 @@ public class Juego extends Application
                 }
             });        
         
+        // Control de raton:
+        escena.setOnMouseClicked((MouseEvent event) -> {
+                disparo.setCenterX(event.getX());
+                disparo.setCenterY(event.getY());
+            });
+        
         // Creacion del timeline y el keyFrame
         Timeline timeline = new Timeline();
         KeyFrame kf = new KeyFrame(Duration.millis(10), (event) -> {
                     for(Enemigo enemigo : enemigos){
                         enemigo.actualizar();
+                        if(enemigo.getVida() && enemigo.disparadoPor(disparo)){
+                            Gema gema = new Gema(ANCHO_DE_LA_ESCENA, ALTO_DE_LA_ESCENA);
+                            gema.fijarPosicion(enemigo.getX()+enemigo.getBoundsInParent().getWidth()/2, enemigo.getY()+enemigo.getBoundsInParent().getWidth()/2);
+                            objetos.add(gema);
+                            panel.getChildren().add(gema);
+                            enemigo.setImage(null);
+                        }
+                    }
+                    for(Objeto objeto : objetos){
+                        objeto.actualizar();
                     }
                     jugador.actualizar();
+                    disparo.setCenterY(-ALTO_DE_LA_ESCENA);
                 });
         timeline.getKeyFrames().add(kf);
         timeline.setCycleCount(Timeline.INDEFINITE);
@@ -87,7 +111,7 @@ public class Juego extends Application
         try{
             BACKGROUND.setImage(new Image("Recursos/background.png"));
         }catch(Exception e){
-            System.out.println("No se encontro la imagen de fondo");
+            e.printStackTrace();
         }
         primaryStage.show();
     }

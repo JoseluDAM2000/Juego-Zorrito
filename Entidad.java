@@ -15,7 +15,7 @@ public abstract class Entidad extends ImageView
         try{
             inicializarImagenes();
         }catch(Exception e){
-            System.out.println("No se encontro alguna de las imagenes del juego");
+            e.printStackTrace();
         }
         setImage(spriteIdle);
         posicionar();

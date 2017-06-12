@@ -1,14 +1,18 @@
 import javafx.scene.image.Image;
 import java.util.Random;
+import javafx.scene.shape.Circle;
 
 public class Enemigo extends Entidad
 {
     private static final int DISTANCIA_PARA_REINICIAR_MOVIMIENTO = 64;
+    private static final int LADO_DEL_SPRITE = 40;
+    private boolean disparado;
     
     public Enemigo(float anchoDeLaEscena, float altoDeLaEscena)
     {
         super(anchoDeLaEscena, altoDeLaEscena);
         velocidad = -1;
+        disparado = false;
     }
 
     @Override
@@ -16,6 +20,9 @@ public class Enemigo extends Entidad
         setX(getX()+ velocidad);
         if(getX() < -DISTANCIA_PARA_REINICIAR_MOVIMIENTO){
             posicionar();
+        }
+        if(disparado){
+            velocidad = 0;
         }
     }
 
@@ -29,5 +36,16 @@ public class Enemigo extends Entidad
     @Override
     public void inicializarImagenes(){
         spriteIdle = new Image("Recursos/GIF/eagle/idle.gif");
+    }
+    
+    public boolean disparadoPor(Circle disparo){
+        if(intersects(disparo.getBoundsInParent())){
+            disparado = true;
+        }
+        return disparado;
+    }
+    
+    public boolean getVida(){
+        return !disparado;
     }
 }
