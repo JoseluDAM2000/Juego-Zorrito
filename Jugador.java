@@ -3,6 +3,7 @@ import javafx.scene.image.Image;
 public class Jugador extends Entidad
 {
     private static final int LADO_DEL_SPRITE = 32;
+    private static final int DISTANCIA_INFERIOR = 210;
     private Image spriteCorriendo;
     private float limiteDerecho, limiteIzquierdo;
     private int velocidadEnCarrera;
@@ -17,7 +18,7 @@ public class Jugador extends Entidad
     
     @Override
     public void posicionar(){
-        setY(altoDeLaEscena-LADO_DEL_SPRITE);
+        setY(altoDeLaEscena-LADO_DEL_SPRITE-DISTANCIA_INFERIOR);
         setX(anchoDeLaEscena/2 - LADO_DEL_SPRITE/2);
     }
     

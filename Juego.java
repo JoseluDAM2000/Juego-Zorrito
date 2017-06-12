@@ -7,6 +7,8 @@ import javafx.animation.Timeline;
 import javafx.animation.KeyFrame;
 import javafx.util.Duration;
 import javafx.scene.input.KeyCode;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class Juego extends Application
 {
@@ -15,6 +17,7 @@ public class Juego extends Application
     private static final float ALTO_DE_LA_ESCENA = 600;
     private ArrayList<Enemigo> enemigos;
     private static final int CANTIDAD_DE_ENEMIGOS = 10;
+    private static final ImageView BACKGROUND = new ImageView();
     
     public static void main(String[] args){
         launch(args);
@@ -29,6 +32,7 @@ public class Juego extends Application
         primaryStage.setTitle(TITULO_DE_LA_VENTANA);
         primaryStage.setResizable(false);
         primaryStage.sizeToScene();
+        panel.getChildren().add(BACKGROUND);
         
         // Iniciamos al jugador:
         Jugador jugador = new Jugador(ANCHO_DE_LA_ESCENA, ALTO_DE_LA_ESCENA);
@@ -80,6 +84,11 @@ public class Juego extends Application
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
         
+        try{
+            BACKGROUND.setImage(new Image("Recursos/background.png"));
+        }catch(Exception e){
+            System.out.println("No se encontro la imagen de fondo");
+        }
         primaryStage.show();
     }
 }

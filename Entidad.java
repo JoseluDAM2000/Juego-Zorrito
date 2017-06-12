@@ -12,7 +12,11 @@ public abstract class Entidad extends ImageView
         super();
         this.anchoDeLaEscena = anchoDeLaEscena;
         this.altoDeLaEscena = altoDeLaEscena;
-        inicializarImagenes();
+        try{
+            inicializarImagenes();
+        }catch(Exception e){
+            System.out.println("No se encontro alguna de las imagenes del juego");
+        }
         setImage(spriteIdle);
         posicionar();
     }
