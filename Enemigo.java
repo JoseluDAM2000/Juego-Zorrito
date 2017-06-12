@@ -1,3 +1,4 @@
+import javafx.scene.image.Image;
 
 public class Enemigo extends Entidad
 {
@@ -19,6 +20,6 @@ public class Enemigo extends Entidad
     
     @Override
     public void inicializarImagenes(){
-        
+        spriteIdle = new Image("Recursos/GIF/eagle/idle.gif");
     }
 }

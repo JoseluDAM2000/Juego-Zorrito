@@ -12,6 +12,7 @@ public abstract class Entidad extends ImageView
         this.anchoDeLaEscena = anchoDeLaEscena;
         this.altoDeLaEscena = altoDeLaEscena;
         inicializarImagenes();
+        setImage(spriteIdle);
         posicionar();
     }
     

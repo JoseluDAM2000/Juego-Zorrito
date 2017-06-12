@@ -1,6 +1,8 @@
+import javafx.scene.image.Image;
 
 public class Jugador extends Entidad
 {
+    private static final int LADO_DEL_SPRITE = 32;
     
     public Jugador(float anchoDeLaEscena, float altoDeLaEscena)
     {
@@ -10,7 +12,8 @@ public class Jugador extends Entidad
     
     @Override
     public void posicionar(){
-        
+        setY(altoDeLaEscena-LADO_DEL_SPRITE);
+        setX(anchoDeLaEscena/2 - LADO_DEL_SPRITE/2);
     }
     
     @Override
@@ -20,7 +23,7 @@ public class Jugador extends Entidad
     
     @Override
     public void inicializarImagenes(){
-        
+        spriteIdle = new Image("Recursos/GIF/player/idle.gif");
     }
     
     public void cambiarDireccion(Direccion direccion){

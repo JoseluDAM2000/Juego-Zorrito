@@ -1,3 +1,4 @@
+import javafx.scene.image.Image;
 
 public class Gema extends Objeto
 {
@@ -23,6 +24,6 @@ public class Gema extends Objeto
     
     @Override
     public void inicializarImagenes(){
-        
+        spriteIdle = new Image("Recursos/GIF/items/gem.gif");
     }
 }
