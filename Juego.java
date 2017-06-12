@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javafx.animation.Timeline;
 import javafx.animation.KeyFrame;
 import javafx.util.Duration;
+import javafx.scene.input.KeyCode;
 
 public class Juego extends Application
 {
@@ -40,6 +41,32 @@ public class Juego extends Application
             enemigos.add(enemigo);
         }
         panel.getChildren().addAll(enemigos);
+        
+        // Controles de teclado:
+        escena.setOnKeyPressed(event ->{
+                if(event.getCode() == KeyCode.RIGHT){
+                    jugador.cambiarDireccion(Direccion.DERECHA);
+                }
+                if(event.getCode() == KeyCode.LEFT){
+                    jugador.cambiarDireccion(Direccion.IZQUIERDA);
+                } 
+                if(event.getCode() == KeyCode.SHIFT){
+                    jugador.correr(true);
+                }
+                // Cierra la ventana del juego y detiene la maquina virtual de java
+                if(event.getCode() == KeyCode.ESCAPE){
+                    System.exit(0);
+                }
+            });
+            
+        escena.setOnKeyReleased(event ->{
+                if(event.getCode() == KeyCode.RIGHT || event.getCode() == KeyCode.LEFT){
+                    jugador.detenerMovimiento();
+                }
+                if(event.getCode() == KeyCode.SHIFT){
+                    jugador.correr(false);
+                }
+            });        
         
         // Creacion del timeline y el keyFrame
         Timeline timeline = new Timeline();
