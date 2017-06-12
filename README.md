@@ -4,9 +4,9 @@ Un juego simple para uno o dos jugadores en el cual tendrás que reunir las gemas
 
 ## Controles
 
-* Con las flechas de direccion moveremos al zorrito por el escenario.
+* Con las flechas de direccion moveremos al zorrito por el escenario.<br>
 ![Example](https://raw.githubusercontent.com/JoseluDAM2000/Juego-Zorrito/master/Recursos/GIF/muestraControles/caminar.gif)<br>
-* Con la tecla Shift nuestro zorrito correra.
+* Con la tecla Shift nuestro zorrito correra.<br>
 ![Example](https://raw.githubusercontent.com/JoseluDAM2000/Juego-Zorrito/master/Recursos/GIF/muestraControles/correr.gif)<br>
 * Con el Click izquierdo del ratón eliminaremos a los aguilas.
 * Pulsando Esc cerraremos el juego.
