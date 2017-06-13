@@ -6,8 +6,12 @@ public class Enemigo extends Entidad
 {
     private static final int DISTANCIA_PARA_REINICIAR_MOVIMIENTO = 64;
     private static final int LADO_DEL_SPRITE = 40;
+    private static final int ACTUALIZACIONES_PARA_DESAPARECER = 35;
     private static final String RUTA_SPRITE_IDLE = "Recursos/GIF/eagle/idle.gif";
+    private static final String RUTA_SPRITE_MUERTE = "Recursos/GIF/eagle/deadth.gif";
+    private Image spriteMuerte;
     private boolean disparado;
+    private int actualizacionesMuerto;
     
     public Enemigo(float anchoDeLaEscena, float altoDeLaEscena, int distanciaAlSuelo)
     {
@@ -24,6 +28,10 @@ public class Enemigo extends Entidad
         }
         if(disparado){
             velocidad = 0;
+            actualizacionesMuerto++;
+            if(actualizacionesMuerto >= ACTUALIZACIONES_PARA_DESAPARECER){
+                setImage(null);
+            }
         }
     }
 
@@ -42,7 +50,13 @@ public class Enemigo extends Entidad
     public boolean disparadoPor(Circle disparo){
         if(intersects(disparo.getBoundsInParent())){
             disparado = true;
-        }
+            try{
+                spriteMuerte = new Image(RUTA_SPRITE_MUERTE);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+            setImage(spriteMuerte);
+      }
         return disparado;
     }
     

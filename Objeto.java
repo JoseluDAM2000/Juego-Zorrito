@@ -21,6 +21,7 @@ public abstract class Objeto extends Entidad
     public boolean recogidoPor(Jugador jugador){
         if(this.intersects(jugador.getBoundsInParent())){
             recogido = true;
+            setImage(null);
         }
         return recogido;
     }

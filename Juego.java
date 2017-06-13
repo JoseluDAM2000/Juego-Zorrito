@@ -104,13 +104,14 @@ public class Juego extends Application
                             gema.fijarPosicion(enemigo.getX()+enemigo.getBoundsInParent().getWidth()/2, enemigo.getY()+enemigo.getBoundsInParent().getWidth()/2);
                             objetos.add(gema);
                             panel.getChildren().add(gema);
-                            enemigo.setImage(null);
                         }
                     }
                     for(Objeto objeto : objetos){
                         if(objeto.recogidoPor(jugador)){
                             //TODO: control de puntos.
-                            objeto.setImage(null);
+                            
+                            
+                            
                         }
                         objeto.actualizar();
                     }
