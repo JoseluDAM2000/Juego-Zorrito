@@ -3,15 +3,14 @@ import javafx.scene.image.Image;
 public class Jugador extends Entidad
 {
     private static final int LADO_DEL_SPRITE = 32;
-    private static final int DISTANCIA_INFERIOR = 210;
     private static final String RUTA_SPRITE_IDLE = "Recursos/GIF/player/idle.gif";
     private static final String RUTA_SPRITE_CORRIENDO = "Recursos/GIF/player/run.gif";
     private Image spriteCorriendo;
     private float limiteDerecho, limiteIzquierdo;
     private int velocidadEnCarrera;
-    public Jugador(float anchoDeLaEscena, float altoDeLaEscena)
+    public Jugador(float anchoDeLaEscena, float altoDeLaEscena, int distanciaAlSuelo)
     {
-        super(anchoDeLaEscena, altoDeLaEscena);
+        super(anchoDeLaEscena, altoDeLaEscena, distanciaAlSuelo);
         limiteDerecho = anchoDeLaEscena;
         limiteIzquierdo = 0;
         velocidad = 0;
@@ -20,7 +19,7 @@ public class Jugador extends Entidad
     
     @Override
     public void posicionar(){
-        setY(altoDeLaEscena-LADO_DEL_SPRITE-DISTANCIA_INFERIOR);
+        setY(distanciaAlSuelo-LADO_DEL_SPRITE);
         setX(anchoDeLaEscena/2 - LADO_DEL_SPRITE/2);
     }
     

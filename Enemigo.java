@@ -9,9 +9,9 @@ public class Enemigo extends Entidad
     private static final String RUTA_SPRITE_IDLE = "Recursos/GIF/eagle/idle.gif";
     private boolean disparado;
     
-    public Enemigo(float anchoDeLaEscena, float altoDeLaEscena)
+    public Enemigo(float anchoDeLaEscena, float altoDeLaEscena, int distanciaAlSuelo)
     {
-        super(anchoDeLaEscena, altoDeLaEscena);
+        super(anchoDeLaEscena, altoDeLaEscena, distanciaAlSuelo);
         velocidad = -1;
         disparado = false;
     }

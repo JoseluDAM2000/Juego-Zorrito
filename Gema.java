@@ -4,9 +4,9 @@ public class Gema extends Objeto
 {
     private double posicionInicialX, posicionInicialY;
     private static final String RUTA_SPRITE = "Recursos/GIF/items/gem.gif";
-    public Gema(float anchoDeLaEscena, float altoDeLaEscena)
+    public Gema(float anchoDeLaEscena, float altoDeLaEscena, int distanciaAlSuelo)
     {
-        super(anchoDeLaEscena, altoDeLaEscena);
+        super(anchoDeLaEscena, altoDeLaEscena, distanciaAlSuelo);
     }
     
     @Override
@@ -18,11 +18,6 @@ public class Gema extends Objeto
     public void posicionar(){
         setX(posicionInicialX);
         setY(posicionInicialY);
-    }
-    
-    @Override
-    public void actualizar(){
-        setY(getY()+1);
     }
     
     @Override
