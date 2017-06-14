@@ -2,18 +2,22 @@
 public abstract class Objeto extends Entidad
 {
     protected boolean recogido;
-    private int margenSobreSuelo = 20;
+    private static final int MARGEN_SOBRE_EL_SUELO = 20;
+    protected int puntos;
     public Objeto(float anchoDeLaEscena, float altoDeLaEscena, int distanciaAlSuelo)
     {
         super(anchoDeLaEscena, altoDeLaEscena, distanciaAlSuelo);
         recogido = false;
+        puntos = 0;
     }
     
-    public abstract int getPuntos();
+    public int getPuntos(){
+        return puntos;
+    }
     
     @Override
     public void actualizar(){
-        if(getY() < distanciaAlSuelo-margenSobreSuelo){
+        if(getY() < distanciaAlSuelo-MARGEN_SOBRE_EL_SUELO){
             setY(getY()+1);
         }
     }

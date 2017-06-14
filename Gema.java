@@ -4,14 +4,11 @@ public class Gema extends Objeto
 {
     private double posicionInicialX, posicionInicialY;
     private static final String RUTA_SPRITE = "Recursos/GIF/items/gem.gif";
+    private static final int VALOR_EN_PUNTOS = 500;
     public Gema(float anchoDeLaEscena, float altoDeLaEscena, int distanciaAlSuelo)
     {
         super(anchoDeLaEscena, altoDeLaEscena, distanciaAlSuelo);
-    }
-    
-    @Override
-    public int getPuntos(){
-        return 0;
+        puntos = VALOR_EN_PUNTOS;
     }
     
     @Override
