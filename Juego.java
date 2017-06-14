@@ -107,14 +107,10 @@ public class Juego extends Application
 
         Timeline timeline = new Timeline();
         KeyFrame kf = new KeyFrame(Duration.millis(MILISEGUNDOS_DEL_KEYFRAME), (event) -> {
-                    // TODO: ITERADORES!!!!
-                    // TODO: ITERADORES!!!!
-                    // TODO: ITERADORES!!!!
-                    // TODO: ITERADORES!!!!
-                    // TODO: ITERADORES!!!!
-                    // TODO: ITERADORES!!!!
-                    // TODO: ITERADORES!!!!
-                    for(Enemigo enemigo : enemigos){
+                    // Iteramos sobre los enemigos.
+                    Iterator<Enemigo> iteradorEnemigos = enemigos.iterator();
+                    while(iteradorEnemigos.hasNext()){
+                        Enemigo enemigo = iteradorEnemigos.next();
                         enemigo.actualizar();
                         if(enemigo.getVida() && enemigo.disparadoPor(disparo)){
                             Gema gema = new Gema(ANCHO_DE_LA_ESCENA, ALTO_DE_LA_ESCENA, DISTANCIA_AL_SUELO);
@@ -122,7 +118,12 @@ public class Juego extends Application
                             objetos.add(gema);
                             panel.getChildren().add(gema);
                         }
+                        if(enemigo.getImage() == null){
+                            iteradorEnemigos.remove();
+                        }
                     }
+                    
+                    // Iteramos sobre los objetos.
                     Iterator<Objeto> iteradorObjetos = objetos.iterator();
                     while(iteradorObjetos.hasNext()){
                         Objeto objeto = iteradorObjetos.next();
@@ -133,8 +134,12 @@ public class Juego extends Application
                             iteradorObjetos.remove();
                         }
                     }
+                    
+                    // Actualizamos los elementos que controla el jugador.
                     jugador.actualizar();
                     disparo.setCenterY(-ALTO_DE_LA_ESCENA);
+                    
+                    // Codigo para "timear" el programa por segundos mas comodamente.
                     contadorMilisegundos += MILISEGUNDOS_DEL_KEYFRAME;
                     if(contadorMilisegundos%MILISEGUNDOS_POR_SEGUNDO == 0){
                         contadorMilisegundos = 0;
