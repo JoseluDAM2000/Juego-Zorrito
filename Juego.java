@@ -34,7 +34,7 @@ public class Juego extends Application
     private static final ImageView BACKGROUND = new ImageView();
     private static final float DIAMETRO_DISPARO = 0.5f;
     private static final int CORRECCION_DISPARO = 16;
-    private static final int TIEMPO_GENERACION_COMIDA = 5;
+    private static final int TIEMPO_GENERACION_COMIDA = 2;
     private static final int POSICION_X_PUNTUACION = 150;
     private static final int POSICION_Y_PUNTUACION = 500;
     private static final String TEXTO_PUNTUACION = "Puntuacion: ";
@@ -144,6 +144,8 @@ public class Juego extends Application
                             puntuacion += objeto.getPuntos();
                             labelPuntuacion.setText(TEXTO_PUNTUACION + String.valueOf(puntuacion));
                             iteradorObjetos.remove();
+                        }else if(objeto.getImage() == null){
+                            iteradorObjetos.remove();
                         }
                     }
                     
@@ -156,7 +158,6 @@ public class Juego extends Application
                     if(contadorMilisegundos%MILISEGUNDOS_POR_SEGUNDO == 0){
                         contadorMilisegundos = 0;
                         contadorSegundos++;
-                        System.out.println(contadorSegundos);
                         // Aqui se genera un objeto comida en el margen de tiempo que le indiquemos.
                         if(contadorSegundos%TIEMPO_GENERACION_COMIDA == 0){
                             Comida comida = new Comida(ANCHO_DE_LA_ESCENA, ALTO_DE_LA_ESCENA, DISTANCIA_AL_SUELO);

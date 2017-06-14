@@ -21,7 +21,7 @@ public class Comida extends Objeto
     public void posicionar(){
         Random rnd = new Random();
         setY(-LADO_DEL_SPRITE);
-        setX(rnd.nextInt((int)anchoDeLaEscena)-LADO_DEL_SPRITE);
+        setX(rnd.nextInt((int)anchoDeLaEscena-LADO_DEL_SPRITE));
     }
     
     @Override

@@ -8,7 +8,7 @@ public abstract class Entidad extends ImageView
     protected Image spriteIdle;
     protected float anchoDeLaEscena;
     protected float altoDeLaEscena;
-    protected int velocidad, distanciaAlSuelo;
+    protected int velocidad, distanciaAlSuelo, actualizacionesParaDesaparecer;
     protected static final double MARGEN_INTERSECCION = 5;
     protected MediaPlayer reproductorSonido;
     protected Media sonido;

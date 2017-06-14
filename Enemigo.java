@@ -22,6 +22,7 @@ public class Enemigo extends Entidad
         super(anchoDeLaEscena, altoDeLaEscena, distanciaAlSuelo);
         velocidad = -1;
         disparado = false;
+        actualizacionesParaDesaparecer = ACTUALIZACIONES_PARA_DESAPARECER;
     }
 
     @Override
