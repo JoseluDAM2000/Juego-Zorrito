@@ -14,12 +14,17 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
 import javafx.scene.control.Label;
 import javafx.scene.ImageCursor;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import java.io.File;
 
 public class Juego extends Application
 {
     private static final String TITULO_DE_LA_VENTANA = "Juego Zorrito";
     private static final String RUTA_IMAGEN_BACKGROUND = "Recursos/background.png";
     private static final String RUTA_IMAGEN_CURSOR = "Recursos/cursor.png";
+    private static final String RUTA_MUSICA_AMBIENTE = "Recursos/Audio/Tambul.mp3";
+    private static final String RUTA_SONIDO_DISPARO = "Recursos/Audio/shot.wav";
     private static final float ANCHO_DE_LA_ESCENA = 800;
     private static final float ALTO_DE_LA_ESCENA = 600;
     private static final int DISTANCIA_AL_SUELO = 390;
@@ -38,7 +43,10 @@ public class Juego extends Application
     private ArrayList<Objeto> objetos;
     private int contadorMilisegundos, puntuacion;
     private long contadorSegundos;
-
+    private Media musicaAmbiente;
+    private Media sonidoDisparo;
+    private MediaPlayer reproductorMusicaAmbiente;
+    
     public static void main(String[] args){
         launch(args);
     }
@@ -103,6 +111,7 @@ public class Juego extends Application
         escena.setOnMouseClicked((MouseEvent event) -> {
                 disparo.setCenterX(event.getX()+CORRECCION_DISPARO);
                 disparo.setCenterY(event.getY()+CORRECCION_DISPARO);
+                new MediaPlayer(sonidoDisparo).play();
             });
 
         // Creacion del timeline y el keyFrame
@@ -163,9 +172,17 @@ public class Juego extends Application
         try{
             BACKGROUND.setImage(new Image(RUTA_IMAGEN_BACKGROUND));
             panel.setCursor(new ImageCursor(new Image(RUTA_IMAGEN_CURSOR)));
+            musicaAmbiente = new Media(new File(RUTA_MUSICA_AMBIENTE).toURI().toString());
+            sonidoDisparo = new Media(new File(RUTA_SONIDO_DISPARO).toURI().toString());
         }catch(Exception e){
             e.printStackTrace();
         }
+        
+        // Inicamos todo lo que respecta a musica y efectos sonoros.
+        reproductorMusicaAmbiente = new MediaPlayer(musicaAmbiente);
+        reproductorMusicaAmbiente.setCycleCount(MediaPlayer.INDEFINITE);
+        reproductorMusicaAmbiente.play();
+
         primaryStage.show();
     }
 }

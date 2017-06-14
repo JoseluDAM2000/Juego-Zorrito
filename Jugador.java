@@ -32,7 +32,7 @@ public class Jugador extends Entidad
     }
     
     @Override
-    public void inicializarImagenes(){
+    public void inicializarMedios(){
         spriteIdle = new Image(RUTA_SPRITE_IDLE);
         spriteCorriendo = new Image(RUTA_SPRITE_CORRIENDO);
     }

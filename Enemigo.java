@@ -1,6 +1,9 @@
 import javafx.scene.image.Image;
 import java.util.Random;
 import javafx.scene.shape.Circle;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import java.io.File;
 
 public class Enemigo extends Entidad
 {
@@ -9,6 +12,7 @@ public class Enemigo extends Entidad
     private static final int ACTUALIZACIONES_PARA_DESAPARECER = 35;
     private static final String RUTA_SPRITE_IDLE = "Recursos/GIF/eagle/idle.gif";
     private static final String RUTA_SPRITE_MUERTE = "Recursos/GIF/eagle/deadth.gif";
+    private static final String RUTA_SONIDO_AGUILA = "Recursos/Audio/eagle.wav";
     private Image spriteMuerte;
     private boolean disparado;
     private int actualizacionesMuerto;
@@ -43,8 +47,10 @@ public class Enemigo extends Entidad
     }
     
     @Override
-    public void inicializarImagenes(){
+    public void inicializarMedios(){
         spriteIdle = new Image(RUTA_SPRITE_IDLE);
+        sonido = new Media(new File(RUTA_SONIDO_AGUILA).toURI().toString());
+        reproductorSonido = new MediaPlayer(sonido);
     }
     
     public boolean disparadoPor(Circle disparo){
@@ -52,6 +58,7 @@ public class Enemigo extends Entidad
             disparado = true;
             try{
                 spriteMuerte = new Image(RUTA_SPRITE_MUERTE);
+                reproductorSonido.play();
             }catch(Exception e){
                 e.printStackTrace();
             }
