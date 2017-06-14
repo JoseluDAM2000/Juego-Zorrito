@@ -13,19 +13,22 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
 import javafx.scene.control.Label;
+import javafx.scene.ImageCursor;
 
 public class Juego extends Application
 {
     private static final String TITULO_DE_LA_VENTANA = "Juego Zorrito";
     private static final String RUTA_IMAGEN_BACKGROUND = "Recursos/background.png";
+    private static final String RUTA_IMAGEN_CURSOR = "Recursos/cursor.png";
     private static final float ANCHO_DE_LA_ESCENA = 800;
     private static final float ALTO_DE_LA_ESCENA = 600;
     private static final int DISTANCIA_AL_SUELO = 390;
-    private static final int CANTIDAD_DE_ENEMIGOS = 10;
+    private static final int CANTIDAD_DE_ENEMIGOS = 40;
     private static final int MILISEGUNDOS_DEL_KEYFRAME = 10;
     private static final int MILISEGUNDOS_POR_SEGUNDO = 1000;
     private static final ImageView BACKGROUND = new ImageView();
-    private static final int DIAMETRO_DISPARO = 5;
+    private static final float DIAMETRO_DISPARO = 0.5f;
+    private static final int CORRECCION_DISPARO = 16;
     private static final int TIEMPO_GENERACION_COMIDA = 5;
     private static final int POSICION_X_PUNTUACION = 150;
     private static final int POSICION_Y_PUNTUACION = 500;
@@ -98,8 +101,8 @@ public class Juego extends Application
 
         // Control de raton:
         escena.setOnMouseClicked((MouseEvent event) -> {
-                disparo.setCenterX(event.getX());
-                disparo.setCenterY(event.getY());
+                disparo.setCenterX(event.getX()+CORRECCION_DISPARO);
+                disparo.setCenterY(event.getY()+CORRECCION_DISPARO);
             });
 
         // Creacion del timeline y el keyFrame
@@ -159,6 +162,7 @@ public class Juego extends Application
 
         try{
             BACKGROUND.setImage(new Image(RUTA_IMAGEN_BACKGROUND));
+            panel.setCursor(new ImageCursor(new Image(RUTA_IMAGEN_CURSOR)));
         }catch(Exception e){
             e.printStackTrace();
         }
