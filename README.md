@@ -1,6 +1,6 @@
 # Juego-Zorrito
 
-Un juego simple para uno o dos jugadores en el cual tendrás que reunir las gemas que sueltan los enemigos al morir y suficiente comida para pasar el nivel.
+Un juego simple para uno o dos jugadores en el cual tendrás que reunir las gemas que sueltan los enemigos al morir y suficiente comida para conseguir la mayor cantidad de puntos.
 
 ## Controles
 
@@ -8,7 +8,8 @@ Un juego simple para uno o dos jugadores en el cual tendrás que reunir las gemas
 ![Example](https://raw.githubusercontent.com/JoseluDAM2000/Juego-Zorrito/master/Recursos/GIF/muestraControles/caminar.gif)<br>
 * Con la tecla Shift nuestro zorrito correra.<br>
 ![Example](https://raw.githubusercontent.com/JoseluDAM2000/Juego-Zorrito/master/Recursos/GIF/muestraControles/correr.gif)<br>
-* Con el Click izquierdo del ratón eliminaremos a los aguilas.
+* Con el Click izquierdo del ratón eliminaremos a los aguilas.<br>
+![Example](https://raw.githubusercontent.com/JoseluDAM2000/Juego-Zorrito/master/Recursos/GIF/muestraControles/disparar.gif)<br>
 * Pulsando Esc cerraremos el juego.
 
 ## Elementos del juego
@@ -30,3 +31,4 @@ Aunque no lo parezca el zorrito es vegetariano, prefiere unas cerezas antes que 
 
 * [Sprites](https://opengameart.org/content/sunny-land-2d-pixel-art-pack)
 * [Background](https://opengameart.org/content/magic-cliffs-environment)
+* [Cursor](https://opengameart.org/content/20-crosshairs-for-re)
