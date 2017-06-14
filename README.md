@@ -27,8 +27,15 @@ Valioso elemento coleccionable, la recompensa al derrotar a un aguila.
 ![Example](https://raw.githubusercontent.com/JoseluDAM2000/Juego-Zorrito/master/Recursos/GIF/items/cherry.gif)<br>
 Aunque no lo parezca el zorrito es vegetariano, prefiere unas cerezas antes que un muslito de aguila frito.
 
-## Recursos
+## Recursos graficos
 
 * [Sprites](https://opengameart.org/content/sunny-land-2d-pixel-art-pack)
 * [Background](https://opengameart.org/content/magic-cliffs-environment)
 * [Cursor](https://opengameart.org/content/20-crosshairs-for-re)
+
+## Recursos sonoros
+
+* [Musica] (https://opengameart.org/content/town-music-0)
+* [Gemas y comida](https://opengameart.org/content/10-8bit-coin-sounds)
+* [Aguilas] (https://opengameart.org/content/rpg-sound-pack)
+* [Disparos] (https://opengameart.org/content/futuristic-sniper-rifle)
