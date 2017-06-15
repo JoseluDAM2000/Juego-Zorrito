@@ -17,6 +17,7 @@ import javafx.scene.ImageCursor;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import java.io.File;
+import javafx.scene.text.TextAlignment;
 
 public class Juego extends Application
 {
@@ -39,6 +40,11 @@ public class Juego extends Application
     private static final int POSICION_X_PUNTUACION = 150;
     private static final int POSICION_Y_PUNTUACION = 500;
     private static final String TEXTO_PUNTUACION = "Puntuacion: ";
+    private static final int PUNTOS_PARA_GANAR = 20000;
+    private static final int PUNTOS_PARA_PERDER = -1000;
+    private static final String MENSAJE_VICTORIA = "¡Has ganado!\nPulsa Esc para salir";
+    private static final String MENSAJE_GAME_OVER = "Game Over\nPulsa Esc para salir";
+    private static final float ANCHO_MENSAJE_FIN_PARTIDA = 100;
     private ArrayList<Enemigo> enemigos;
     private Circle disparo;
     private ArrayList<Objeto> objetos;
@@ -140,10 +146,14 @@ public class Juego extends Application
                         objeto.actualizar();
                         if(objeto.recogidoPor(jugador)){
                             puntuacion += objeto.getPuntos();
+                            iteradorObjetos.remove();
                             labelPuntuacion.setText(TEXTO_PUNTUACION + String.valueOf(puntuacion));
+                        }else if(objeto.getImage() == null){
                             iteradorObjetos.remove();
-                        }else if(objeto.getImage() == null || zarigueya.robar(objeto)){
+                        }else if(zarigueya.robar(objeto)){
                             iteradorObjetos.remove();
+                            puntuacion -= objeto.getPuntos();
+                            labelPuntuacion.setText(TEXTO_PUNTUACION + String.valueOf(puntuacion));
                         }
                     }
                     
@@ -168,6 +178,24 @@ public class Juego extends Application
                             enemigos.add(enemigo);
                             panel.getChildren().add(enemigo);
                         }
+                    }
+                    
+                    if(puntuacion >= PUNTOS_PARA_GANAR){
+                        Label etiquetaVictoria = new Label(MENSAJE_VICTORIA);
+                        etiquetaVictoria.setTextAlignment(TextAlignment.CENTER);
+                        etiquetaVictoria.setMaxWidth(ANCHO_MENSAJE_FIN_PARTIDA);
+                        etiquetaVictoria.setLayoutX(ANCHO_DE_LA_ESCENA / 2 - ANCHO_MENSAJE_FIN_PARTIDA / 2);
+                        etiquetaVictoria.setLayoutY(ALTO_DE_LA_ESCENA / 2);
+                        panel.getChildren().add(etiquetaVictoria);
+                        timeline.stop();
+                    }else if(puntuacion <= PUNTOS_PARA_PERDER){
+                        Label etiquetaGameOver = new Label(MENSAJE_GAME_OVER);
+                        etiquetaGameOver.setTextAlignment(TextAlignment.CENTER);
+                        etiquetaGameOver.setMaxWidth(ANCHO_MENSAJE_FIN_PARTIDA);
+                        etiquetaGameOver.setLayoutX(ANCHO_DE_LA_ESCENA / 2 - ANCHO_MENSAJE_FIN_PARTIDA / 2);
+                        etiquetaGameOver.setLayoutY(ALTO_DE_LA_ESCENA / 2);
+                        panel.getChildren().add(etiquetaGameOver);
+                        timeline.stop();
                     }
                 });
         timeline.getKeyFrames().add(kf);
