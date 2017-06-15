@@ -23,6 +23,7 @@ public class Juego extends Application
 {
     private static final String TITULO_DE_LA_VENTANA = "Juego Zorrito";
     private static final String RUTA_IMAGEN_BACKGROUND = "Recursos/background.png";
+    private static final String RUTA_ICONO_VENTANA = "Recursos/ico.png";
     private static final String RUTA_IMAGEN_CURSOR = "Recursos/cursor.png";
     private static final String RUTA_MUSICA_AMBIENTE = "Recursos/Audio/Tambul.mp3";
     private static final String RUTA_SONIDO_DISPARO = "Recursos/Audio/shot.wav";
@@ -45,6 +46,7 @@ public class Juego extends Application
     private static final String MENSAJE_VICTORIA = "¡Has ganado!\nPulsa Esc para salir";
     private static final String MENSAJE_GAME_OVER = "Game Over\nPulsa Esc para salir";
     private static final float ANCHO_MENSAJE_FIN_PARTIDA = 100;
+    private Image iconoVentana;
     private ArrayList<Enemigo> enemigos;
     private Circle disparo;
     private ArrayList<Objeto> objetos;
@@ -204,9 +206,12 @@ public class Juego extends Application
 
         try{
             BACKGROUND.setImage(new Image(RUTA_IMAGEN_BACKGROUND));
+            iconoVentana = new Image(RUTA_ICONO_VENTANA);
             panel.setCursor(new ImageCursor(new Image(RUTA_IMAGEN_CURSOR)));
             musicaAmbiente = new Media(new File(RUTA_MUSICA_AMBIENTE).toURI().toString());
             sonidoDisparo = new Media(new File(RUTA_SONIDO_DISPARO).toURI().toString());
+            
+            primaryStage.getIcons().add(iconoVentana); 
         }catch(Exception e){
             e.printStackTrace();
         }
