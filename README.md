@@ -35,7 +35,7 @@ Aunque no lo parezca el zorrito es vegetariano, prefiere unas cerezas antes que 
 
 ## Recursos sonoros
 
-* [Musica] (https://opengameart.org/content/town-music-0)
+* [Musica](https://opengameart.org/content/town-music-0)
 * [Gemas y comida](https://opengameart.org/content/10-8bit-coin-sounds)
-* [Aguilas] (https://opengameart.org/content/rpg-sound-pack)
-* [Disparos] (https://opengameart.org/content/futuristic-sniper-rifle)
+* [Aguilas](https://opengameart.org/content/rpg-sound-pack)
+* [Disparos](https://opengameart.org/content/futuristic-sniper-rifle)
