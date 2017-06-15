@@ -1,6 +1,6 @@
 # Juego-Zorrito
 
-Un juego simple para uno o dos jugadores en el cual tendrás que reunir las gemas que sueltan los enemigos al morir y suficiente comida para conseguir la mayor cantidad de puntos.
+Un juego simple para uno o dos jugadores en el cual tendrás que reunir las gemas que sueltan los enemigos al morir y suficiente comida para conseguir 20.000 puntos, si la zarigueya te roba la comida te quitara puntos, al llegar a -1.000 pierdes.
 
 ## Controles
 

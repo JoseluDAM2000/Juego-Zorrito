@@ -136,6 +136,7 @@ public class Juego extends Application
                             panel.getChildren().add(gema);
                         }
                         if(enemigo.getImage() == null){
+                            panel.getChildren().remove(enemigo);
                             iteradorEnemigos.remove();
                         }
                     }
@@ -148,11 +149,14 @@ public class Juego extends Application
                         objeto.actualizar();
                         if(objeto.recogidoPor(jugador)){
                             puntuacion += objeto.getPuntos();
+                            panel.getChildren().remove(objeto);
                             iteradorObjetos.remove();
                             labelPuntuacion.setText(TEXTO_PUNTUACION + String.valueOf(puntuacion));
                         }else if(objeto.getImage() == null){
                             iteradorObjetos.remove();
+                            panel.getChildren().remove(objeto);
                         }else if(zarigueya.robar(objeto)){
+                            panel.getChildren().remove(objeto);
                             iteradorObjetos.remove();
                             puntuacion -= objeto.getPuntos();
                             labelPuntuacion.setText(TEXTO_PUNTUACION + String.valueOf(puntuacion));
