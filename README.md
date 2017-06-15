@@ -20,6 +20,9 @@ El prota, una monada de personaje.
 * Aguila:
 ![Example](https://raw.githubusercontent.com/JoseluDAM2000/Juego-Zorrito/master/Recursos/GIF/eagle/idle.gif)<br>
 Una criatura majestuosa que eliminaremos a golpe de click
+* Zarigüeya:
+![Example](https://raw.githubusercontent.com/JoseluDAM2000/Juego-Zorrito/master/Recursos/GIF/opossum/walk.gif)<br>
+Esta pequeña sabandija nos robara los objetos y nos restará los puntos.
 * Gema:
 ![Example](https://raw.githubusercontent.com/JoseluDAM2000/Juego-Zorrito/master/Recursos/GIF/items/gem.gif)<br>
 Valioso elemento coleccionable, la recompensa al derrotar a un aguila.
@@ -37,5 +40,5 @@ Aunque no lo parezca el zorrito es vegetariano, prefiere unas cerezas antes que 
 
 * [Musica](https://opengameart.org/content/town-music-0)
 * [Gemas y comida](https://opengameart.org/content/10-8bit-coin-sounds)
-* [Aguilas](https://opengameart.org/content/rpg-sound-pack)
+* [Aguilas y Zarigüeya](https://opengameart.org/content/rpg-sound-pack)
 * [Disparos](https://opengameart.org/content/futuristic-sniper-rifle)
