@@ -47,6 +47,7 @@ public class Juego extends Application
     private Media musicaAmbiente;
     private Media sonidoDisparo;
     private MediaPlayer reproductorMusicaAmbiente;
+    private Zarigueya zarigueya;
     
     public static void main(String[] args){
         launch(args);
@@ -74,7 +75,8 @@ public class Juego extends Application
         labelPuntuacion.setLayoutY(POSICION_Y_PUNTUACION);
         panel.getChildren().add(labelPuntuacion);
         enemigos = new ArrayList<Enemigo>();
-        
+        zarigueya = new Zarigueya(ANCHO_DE_LA_ESCENA, ALTO_DE_LA_ESCENA, DISTANCIA_AL_SUELO);
+        panel.getChildren().add(zarigueya);
 
         // Controles de teclado:
         escena.setOnKeyPressed(event ->{
@@ -129,6 +131,7 @@ public class Juego extends Application
                             iteradorEnemigos.remove();
                         }
                     }
+                    zarigueya.actualizar();
                     
                     // Iteramos sobre los objetos.
                     Iterator<Objeto> iteradorObjetos = objetos.iterator();
@@ -139,7 +142,7 @@ public class Juego extends Application
                             puntuacion += objeto.getPuntos();
                             labelPuntuacion.setText(TEXTO_PUNTUACION + String.valueOf(puntuacion));
                             iteradorObjetos.remove();
-                        }else if(objeto.getImage() == null){
+                        }else if(objeto.getImage() == null || zarigueya.robar(objeto)){
                             iteradorObjetos.remove();
                         }
                     }
