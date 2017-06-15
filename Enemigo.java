@@ -13,9 +13,10 @@ public class Enemigo extends Entidad
     private static final String RUTA_SPRITE_IDLE = "Recursos/GIF/eagle/idle.gif";
     private static final String RUTA_SPRITE_MUERTE = "Recursos/GIF/eagle/deadth.gif";
     private static final String RUTA_SONIDO_AGUILA = "Recursos/Audio/eagle.wav";
+    private static final int MARGEN_MOVIMIENTO = 15;
     private Image spriteMuerte;
     private boolean disparado;
-    private int actualizacionesMuerto;
+    private int actualizacionesMuerto, posicionInicialY, velocidadY;
     
     public Enemigo(float anchoDeLaEscena, float altoDeLaEscena, int distanciaAlSuelo)
     {
@@ -23,11 +24,16 @@ public class Enemigo extends Entidad
         velocidad = -1;
         disparado = false;
         actualizacionesParaDesaparecer = ACTUALIZACIONES_PARA_DESAPARECER;
+        velocidadY = 1;
     }
 
     @Override
     public void actualizar(){
         setX(getX()+ velocidad);
+        setY(getY()+ velocidadY);
+        if(getY() >= posicionInicialY + MARGEN_MOVIMIENTO || getY() <= posicionInicialY - MARGEN_MOVIMIENTO){
+            velocidadY *= -1;
+        }
         if(getX() < -DISTANCIA_PARA_REINICIAR_MOVIMIENTO){
             posicionar();
         }
@@ -43,7 +49,8 @@ public class Enemigo extends Entidad
     @Override
     public void posicionar(){
         Random rnd = new Random();
-        setY(rnd.nextInt((int)altoDeLaEscena/2));
+        posicionInicialY = rnd.nextInt((int)altoDeLaEscena/2);
+        setY(posicionInicialY);
         setX(anchoDeLaEscena+rnd.nextInt((int)anchoDeLaEscena*2));
     }
     

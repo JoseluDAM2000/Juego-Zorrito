@@ -28,13 +28,14 @@ public class Juego extends Application
     private static final float ANCHO_DE_LA_ESCENA = 800;
     private static final float ALTO_DE_LA_ESCENA = 600;
     private static final int DISTANCIA_AL_SUELO = 390;
-    private static final int CANTIDAD_DE_ENEMIGOS = 40;
+    private static final int CANTIDAD__DE_ENEMIGOS = 40;
     private static final int MILISEGUNDOS_DEL_KEYFRAME = 10;
     private static final int MILISEGUNDOS_POR_SEGUNDO = 1000;
     private static final ImageView BACKGROUND = new ImageView();
     private static final float DIAMETRO_DISPARO = 0.5f;
     private static final int CORRECCION_DISPARO = 16;
     private static final int TIEMPO_GENERACION_COMIDA = 2;
+    private static final int TIEMPO_GENERADCION_ENEMIGOS = 1;
     private static final int POSICION_X_PUNTUACION = 150;
     private static final int POSICION_Y_PUNTUACION = 500;
     private static final String TEXTO_PUNTUACION = "Puntuacion: ";
@@ -62,7 +63,7 @@ public class Juego extends Application
         primaryStage.sizeToScene();
         panel.getChildren().add(BACKGROUND);
 
-        // Iniciamos al jugador, la coleccion de objetos y la puntuacion:
+        // Iniciamos al jugador, las colecciones y la puntuacion:
         Jugador jugador = new Jugador(ANCHO_DE_LA_ESCENA, ALTO_DE_LA_ESCENA, DISTANCIA_AL_SUELO);
         panel.getChildren().add(jugador);
         disparo = new Circle (DIAMETRO_DISPARO);
@@ -72,14 +73,8 @@ public class Juego extends Application
         labelPuntuacion.setLayoutX(POSICION_X_PUNTUACION);
         labelPuntuacion.setLayoutY(POSICION_Y_PUNTUACION);
         panel.getChildren().add(labelPuntuacion);
-
-        // Inicializamos a los enemigos:
         enemigos = new ArrayList<Enemigo>();
-        for(int i = 0; i<= CANTIDAD_DE_ENEMIGOS; i++){
-            Enemigo enemigo = new Enemigo(ANCHO_DE_LA_ESCENA, ALTO_DE_LA_ESCENA, DISTANCIA_AL_SUELO);
-            enemigos.add(enemigo);
-        }
-        panel.getChildren().addAll(enemigos);
+        
 
         // Controles de teclado:
         escena.setOnKeyPressed(event ->{
@@ -163,6 +158,12 @@ public class Juego extends Application
                             Comida comida = new Comida(ANCHO_DE_LA_ESCENA, ALTO_DE_LA_ESCENA, DISTANCIA_AL_SUELO);
                             objetos.add(comida);
                             panel.getChildren().add(comida);
+                        }
+                        // Aqi generamos enemigos con el margen de tiempo indicado y hasta el limite de enemigos maximo.
+                        if(contadorSegundos%TIEMPO_GENERADCION_ENEMIGOS == 0 && enemigos.size() <= CANTIDAD__DE_ENEMIGOS){
+                            Enemigo enemigo = new Enemigo(ANCHO_DE_LA_ESCENA, ALTO_DE_LA_ESCENA, DISTANCIA_AL_SUELO);
+                            enemigos.add(enemigo);
+                            panel.getChildren().add(enemigo);
                         }
                     }
                 });
